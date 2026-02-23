@@ -3,29 +3,36 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Someday Reminder — Flexible Reminders for iOS</title>
-<meta name="description" content="Someday Reminder lets you plan things without the pressure of exact dates. Schedule reminders for 'Early March,' 'Someday,' or a specific day — whatever feels right.">
+<script>
+  !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug getPageviewId".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+  posthog.init('phc_ztIjBWZp495eGWUZSUprsXSLzyElBWMcf2xc65kKfE5', {
+    api_host: 'https://eu.i.posthog.com',
+    person_profiles: 'anonymous'
+  });
+</script>
+<title>Remi - Flexible Reminder & Planner</title>
+<meta name="description" content="Someday Reminder lets you plan things without the pressure of exact dates. Schedule reminders for 'Early March,' 'Someday,' or a specific day - whatever feels right.">
 <meta name="keywords" content="reminder app, iOS reminder, flexible reminders, someday reminder, calendar app, widgets, iCloud backup">
 <meta name="author" content="Someday Reminder">
 <link rel="canonical" href="https://remireminder.app/">
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
-<meta property="og:title" content="Someday Reminder — Flexible Reminders for iOS">
+<meta property="og:title" content="Remi - Flexible Reminder & Planner for Life's Someday Moments">
 <meta property="og:description" content="Plan things without the pressure of exact dates. Schedule reminders for 'Early March,' 'Someday,' or a specific day.">
 <meta property="og:url" content="https://remireminder.app/">
-<meta property="og:image" content="https://remireminder.app/screenshots/CreateReminder.png">
-<meta property="og:site_name" content="Someday Reminder">
+<meta property="og:image" content="https://remireminder.app/assets/CreateReminder.png">
+<meta property="og:site_name" content="Remi">
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Someday Reminder — Flexible Reminders for iOS">
+<meta name="twitter:title" content="Remi - Flexible Reminder & Planner for Life's Someday Moments">
 <meta name="twitter:description" content="Plan things without the pressure of exact dates. Schedule reminders for 'Early March,' 'Someday,' or a specific day.">
-<meta name="twitter:image" content="https://remireminder.app/screenshots/CreateReminder.png">
+<meta name="twitter:image" content="https://remireminder.app/assets/CreateReminder.png">
 
 <!-- Favicon -->
-<link rel="icon" type="image/png" href="screenshots/appicon.png">
-<link rel="apple-touch-icon" href="screenshots/appicon.png">
+<link rel="icon" type="image/png" href="assets/appicon.png">
+<link rel="apple-touch-icon" href="assets/appicon.png">
 
 <meta name="apple-itunes-app" content="app-id=6759194352">
 <style>
@@ -118,6 +125,17 @@
     height: 54px;
   }
 
+  .coming-soon {
+    display: inline-block;
+    padding: 12px 28px;
+    background: #1a1a1a;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 12px;
+    letter-spacing: 0.2px;
+  }
+
   .screenshots-pair {
     display: flex;
     align-items: flex-end;
@@ -129,14 +147,57 @@
     flex-shrink: 0;
   }
 
-  .screenshot-wrap:first-child { width: 276px; }
-  .screenshot-wrap:last-child { width: 230px; transform: rotate(3deg); }
+  @media (max-width: 500px) {
+    .screenshot-wrap { cursor: pointer; }
+  }
+
+  .lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.85);
+    align-items: center;
+    justify-content: center;
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+  }
+
+  .lightbox.active { display: flex; }
+
+  .lightbox img {
+    max-height: 90vh;
+    max-width: 90vw;
+    object-fit: contain;
+  }
+
+  .lightbox-btn {
+    position: absolute;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 32px;
+    cursor: pointer;
+    padding: 12px;
+    line-height: 1;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .lightbox-btn:hover { opacity: 1; }
+
+  .lightbox-close { top: 16px; right: 20px; font-size: 36px; }
+  .lightbox-prev { left: 16px; top: 50%; transform: translateY(-50%); }
+  .lightbox-next { right: 16px; top: 50%; transform: translateY(-50%); }
+
+  .screenshot-wrap:nth-child(1) { width: 276px; }
+  .screenshot-wrap:nth-child(2) { width: 240px; transform: rotate(3deg); }
+  .screenshot-wrap:nth-child(3) { width: 200px; transform: rotate(-6deg); }
 
   .screenshot-wrap img {
     width: 100%;
     display: block;
-    border-radius: 24px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15), 0 2px 8px rgba(0, 0, 0, 0.1);
   }
 
   .divider {
@@ -211,22 +272,29 @@
     .tagline { font-size: 16px; }
     .app-icon { margin: 0 auto 24px; }
 
-    .screenshot-wrap:first-child {
-      width: 216px;
-    }
-    .screenshot-wrap:last-child {
+    .screenshot-wrap:nth-child(1) {
       width: 180px;
+    }
+    .screenshot-wrap:nth-child(2) {
+      width: 156px;
+    }
+    .screenshot-wrap:nth-child(3) {
+      width: 130px;
     }
   }
 
   @media (max-width: 500px) {
     .hero { padding: 48px 20px 32px; }
     h1 { font-size: 32px; }
-    .screenshot-wrap:first-child {
-      width: 174px;
+    .screenshots-pair { gap: 12px; }
+    .screenshot-wrap:nth-child(1) {
+      width: 34%;
     }
-    .screenshot-wrap:last-child {
-      width: 145px;
+    .screenshot-wrap:nth-child(2) {
+      width: 30%;
+    }
+    .screenshot-wrap:nth-child(3) {
+      width: 25%;
     }
     .privacy { padding: 40px 20px 60px; }
   }
@@ -237,26 +305,27 @@
 <section class="hero">
   <div class="hero-text">
     <div class="app-icon">
-      <img src="screenshots/appicon.png" alt="Someday Reminder app icon">
+      <img src="assets/appicon.png" alt="Someday Reminder app icon">
     </div>
     <h1>Meet Remi</h1>
-    <p class="tagline">Plan things without the pressure of exact dates. Schedule reminders for "Early March," "Someday," or a specific day — whatever feels right.</p>
+    <p class="tagline">Plan things without the pressure of exact dates. Schedule reminders for "Early March," "Someday," or a specific day - whatever feels right.</p>
     <ul class="features">
       <li>Exact dates, month ranges, or just "Someday"</li>
       <li>Yearly calendar overview at a glance</li>
       <li>Home screen widgets</li>
       <li>iCloud backup & external calendar sync</li>
     </ul>
-    <a class="app-store-badge" href="https://apps.apple.com/app/id6759194352" target="_blank" rel="noopener">
-      <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store">
-    </a>
+    <span class="coming-soon">Coming Soon on the App Store</span>
   </div>
   <div class="screenshots-pair">
     <div class="screenshot-wrap">
-      <img src="screenshots/CreateReminder.png" alt="Someday Reminder — create a new reminder" loading="lazy">
+      <img src="assets/Reminders.png" alt="Someday Reminder - reminders list" loading="lazy">
     </div>
     <div class="screenshot-wrap">
-      <img src="screenshots/YearView.png" alt="Someday Reminder — yearly calendar overview" loading="lazy">
+      <img src="assets/Yearly.png" alt="Someday Reminder - yearly calendar overview" loading="lazy">
+    </div>
+    <div class="screenshot-wrap">
+      <img src="assets/CreateReminder.png" alt="Someday Reminder - create a new reminder" loading="lazy">
     </div>
   </div>
 </section>
@@ -270,7 +339,7 @@
   <p>Your reminders are stored locally on your device. If you enable iCloud backup, your data is synced via your personal iCloud account. We do not operate any servers that store your reminder data.</p>
 
   <h3>Analytics</h3>
-  <p>Someday Reminder uses <a href="https://posthog.com" target="_blank" rel="noopener" style="color: #34C759;">PostHog</a> for anonymous usage analytics, hosted in the EU. Analytics is opt-in — it is disabled by default and only enabled if you explicitly turn it on in Settings. When enabled, we collect:</p>
+  <p>Someday Reminder uses <a href="https://posthog.com" target="_blank" rel="noopener" style="color: #34C759;">PostHog</a> for anonymous usage analytics, hosted in the EU. Analytics is opt-in - it is disabled by default and only enabled if you explicitly turn it on in Settings. When enabled, we collect:</p>
   <ul>
     <li>App usage patterns (screens viewed, features used)</li>
     <li>App version and build number</li>
@@ -296,6 +365,59 @@
 <footer>
   &copy; 2026 Someday Reminder &middot; <a href="#privacy">Privacy Policy</a>
 </footer>
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-btn lightbox-close" id="lb-close">&times;</button>
+  <button class="lightbox-btn lightbox-prev" id="lb-prev">&lsaquo;</button>
+  <button class="lightbox-btn lightbox-next" id="lb-next">&rsaquo;</button>
+  <img id="lb-img" src="" alt="">
+</div>
+
+<script>
+(function() {
+  var imgs = ['assets/Reminders.png', 'assets/Yearly.png', 'assets/CreateReminder.png'];
+  var idx = 0;
+  var lb = document.getElementById('lightbox');
+  var lbImg = document.getElementById('lb-img');
+
+  function show(i) {
+    idx = i;
+    lbImg.src = imgs[idx];
+    lb.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function hide() {
+    lb.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('.screenshot-wrap').forEach(function(el, i) {
+    el.addEventListener('click', function() {
+      if (window.innerWidth <= 500) show(i);
+    });
+  });
+
+  document.getElementById('lb-close').addEventListener('click', hide);
+  document.getElementById('lb-prev').addEventListener('click', function() {
+    show((idx - 1 + imgs.length) % imgs.length);
+  });
+  document.getElementById('lb-next').addEventListener('click', function() {
+    show((idx + 1) % imgs.length);
+  });
+
+  lb.addEventListener('click', function(e) {
+    if (e.target === lb) hide();
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (!lb.classList.contains('active')) return;
+    if (e.key === 'Escape') hide();
+    if (e.key === 'ArrowLeft') show((idx - 1 + imgs.length) % imgs.length);
+    if (e.key === 'ArrowRight') show((idx + 1) % imgs.length);
+  });
+})();
+</script>
 
 </body>
 </html>
