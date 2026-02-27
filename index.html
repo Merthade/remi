@@ -136,6 +136,75 @@
     letter-spacing: 0.2px;
   }
 
+  .android-waitlist {
+    margin-top: 24px;
+    text-align: center;
+  }
+
+  .android-waitlist p {
+    font-size: 13px;
+    color: #888;
+    margin-bottom: 8px;
+  }
+
+  .waitlist-form {
+    display: flex;
+    gap: 6px;
+    justify-content: center;
+  }
+
+  .waitlist-form input {
+    padding: 8px 12px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    outline: none;
+    width: 190px;
+    font-family: inherit;
+    transition: border-color 0.2s;
+  }
+
+  .waitlist-form input:focus {
+    border-color: #34C759;
+  }
+
+  .waitlist-form input.invalid {
+    border-color: #ff3b30;
+    animation: shake 0.4s ease;
+  }
+
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20% { transform: translateX(-6px); }
+    40% { transform: translateX(6px); }
+    60% { transform: translateX(-4px); }
+    80% { transform: translateX(4px); }
+  }
+
+  .waitlist-form button {
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: inherit;
+    background: #1a1a1a;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    white-space: nowrap;
+  }
+
+  .waitlist-form button:hover {
+    opacity: 0.85;
+  }
+
+  .waitlist-success {
+    font-size: 13px;
+    color: #34C759;
+    font-weight: 600;
+  }
+
   .screenshots-pair {
     display: flex;
     align-items: flex-end;
@@ -310,12 +379,22 @@
     <h1>Meet Remi</h1>
     <p class="tagline">Plan things without the pressure of exact dates. Schedule reminders for "Early March," "Someday," or a specific day - whatever feels right.</p>
     <ul class="features">
-      <li>Exact dates, month ranges, or just "Someday"</li>
+      <li>Powerful, flexible reminder creation</li>
       <li>Yearly calendar overview at a glance</li>
       <li>Home screen widgets</li>
       <li>iCloud backup & external calendar sync</li>
+      <li>Privacy first — reminders stay on device</li>
     </ul>
-    <span class="coming-soon">Coming Soon on the App Store</span>
+    <a href="https://itunes.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=6759194352" class="app-store-badge" target="_blank" rel="noopener">
+      <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83" alt="Download on the App Store">
+    </a>
+    <div class="android-waitlist" id="android-waitlist">
+      <p>Interested in Android? Get notified.</p>
+      <form class="waitlist-form" id="waitlist-form">
+        <input type="text" placeholder="your@email.com" id="waitlist-email" autocomplete="email" autocapitalize="none" spellcheck="false">
+        <button type="submit">Notify me</button>
+      </form>
+    </div>
   </div>
   <div class="screenshots-pair">
     <div class="screenshot-wrap">
@@ -415,6 +494,33 @@
     if (e.key === 'Escape') hide();
     if (e.key === 'ArrowLeft') show((idx - 1 + imgs.length) % imgs.length);
     if (e.key === 'ArrowRight') show((idx + 1) % imgs.length);
+  });
+})();
+</script>
+
+<script>
+(function() {
+  var form = document.getElementById('waitlist-form');
+  var container = document.getElementById('android-waitlist');
+
+  var input = document.getElementById('waitlist-email');
+
+  input.addEventListener('input', function() {
+    input.classList.remove('invalid');
+  });
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var email = input.value.trim();
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      input.classList.add('invalid');
+      input.focus();
+      return;
+    }
+
+    posthog.capture('android_waitlist_signup', { email: email });
+
+    container.innerHTML = '<p class="waitlist-success">Thanks! We\'ll let you know.</p>';
   });
 })();
 </script>
