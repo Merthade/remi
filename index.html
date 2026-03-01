@@ -11,15 +11,15 @@
     persistence: 'memory'
   });
 </script>
-<title>Remi - Gentle Reminders for Real Life</title>
+<title>Remi - Flexible Reminders & Planner for iOS</title>
 <meta name="description" content="Not everything needs a deadline. Remi lets you plan things your way. Set a specific date, pick 'early March,' or just say 'someday.' Free on iOS. No subscription.">
 <meta name="keywords" content="reminder app, iOS reminder, flexible reminders, someday reminder, planner app, no subscription, one-time purchase, widgets, iCloud backup">
-<meta name="author" content="Remi">
+<meta name="author" content="Emils Ozols">
 <link rel="canonical" href="https://remireminder.app/">
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
-<meta property="og:title" content="Remi - Gentle Reminders for Real Life">
+<meta property="og:title" content="Remi - Flexible Reminders & Planner for iOS">
 <meta property="og:description" content="Not everything needs a deadline. Set a specific date, pick 'early March,' or just say 'someday.' Free on iOS. No subscription.">
 <meta property="og:url" content="https://remireminder.app/">
 <meta property="og:image" content="https://remireminder.app/assets/CreateReminder.png">
@@ -27,15 +27,54 @@
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Remi - Gentle Reminders for Real Life">
+<meta name="twitter:title" content="Remi - Flexible Reminders & Planner for iOS">
 <meta name="twitter:description" content="Not everything needs a deadline. Set a specific date, pick 'early March,' or just say 'someday.' Free on iOS. No subscription.">
 <meta name="twitter:image" content="https://remireminder.app/assets/CreateReminder.png">
+
+<!-- Preconnect -->
+<link rel="preconnect" href="https://tools.applemediaservices.com">
+<link rel="preconnect" href="https://eu.i.posthog.com">
 
 <!-- Favicon -->
 <link rel="icon" type="image/png" href="assets/appicon.png">
 <link rel="apple-touch-icon" href="assets/appicon.png">
 
 <meta name="apple-itunes-app" content="app-id=6759194352">
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Remi",
+  "description": "Flexible reminder and planner app for iOS. Set reminders for an exact date, anytime in a month, or someday. No subscription.",
+  "url": "https://remireminder.app/",
+  "applicationCategory": "ProductivityApplication",
+  "operatingSystem": "iOS",
+  "offers": [
+    {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD",
+      "description": "Free with core features"
+    },
+    {
+      "@type": "Offer",
+      "price": "6.99",
+      "priceCurrency": "USD",
+      "description": "Premium one-time unlock"
+    }
+  ],
+  "author": {
+    "@type": "Person",
+    "name": "Emils Ozols",
+    "url": "https://www.linkedin.com/in/emils-ozols/"
+  },
+  "image": "https://remireminder.app/assets/appicon.png",
+  "screenshot": "https://remireminder.app/assets/CreateReminder.png"
+}
+</script>
+
 <style>
   /* ── Reset & Base ── */
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -56,7 +95,6 @@
     --section-alt: #f5f5f7;
     --table-header-bg: #f0faf2;
     --table-border: #e8e8e8;
-    --privacy-bg: #f5f5f7;
     --hero-gradient-start: #f0faf2;
     --hero-gradient-end: #fafafa;
     --footer-border: #eee;
@@ -74,7 +112,6 @@
     --section-alt: #161618;
     --table-header-bg: #1a2e1e;
     --table-border: #3a3a3c;
-    --privacy-bg: #161618;
     --hero-gradient-start: #1a2e1e;
     --hero-gradient-end: #1C1C1E;
     --footer-border: #2c2c2e;
@@ -694,7 +731,7 @@
 
   /* ── Pricing ── */
   .pricing {
-    padding: 100px 24px;
+    padding: 100px 24px 60px;
   }
 
   .pricing .header {
@@ -775,7 +812,7 @@
 
   /* ── Final CTA ── */
   .final-cta {
-    padding: 100px 24px;
+    padding: 60px 24px 100px;
     text-align: center;
     background: linear-gradient(180deg, var(--bg) 0%, var(--hero-gradient-start) 100%);
   }
@@ -790,92 +827,6 @@
 
   .final-cta .hero-buttons {
     margin-bottom: 28px;
-  }
-
-  /* ── Privacy ── */
-  .privacy-section {
-    padding: 80px 24px;
-    background: var(--privacy-bg);
-  }
-
-  .privacy-toggle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    cursor: pointer;
-    background: none;
-    border: none;
-    font-family: inherit;
-    font-size: 16px;
-    font-weight: 600;
-    color: var(--text);
-    margin: 0 auto 0;
-    padding: 0;
-  }
-
-  .privacy-toggle .chevron {
-    transition: transform 0.3s ease;
-    font-size: 14px;
-    color: var(--text-secondary);
-  }
-
-  .privacy-toggle.open .chevron {
-    transform: rotate(180deg);
-  }
-
-  .privacy-content {
-    max-width: 640px;
-    margin: 0 auto;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.5s ease, padding 0.3s ease;
-    padding-top: 0;
-  }
-
-  .privacy-content.open {
-    max-height: 2000px;
-    padding-top: 32px;
-  }
-
-  .privacy-content h3 {
-    font-size: 17px;
-    font-weight: 600;
-    margin: 24px 0 8px;
-    color: var(--text);
-  }
-
-  .privacy-content h3:first-child {
-    margin-top: 0;
-  }
-
-  .privacy-content p, .privacy-content li {
-    font-size: 15px;
-    line-height: 1.7;
-    color: var(--text-secondary);
-  }
-
-  .privacy-content ul {
-    padding-left: 20px;
-    margin: 8px 0;
-  }
-
-  .privacy-content li { margin-bottom: 4px; }
-
-  .privacy-content a {
-    color: var(--green);
-    text-decoration: none;
-  }
-
-  .privacy-content a:hover {
-    text-decoration: underline;
-  }
-
-  .privacy-updated {
-    text-align: center;
-    font-size: 13px;
-    color: var(--text-tertiary);
-    margin-bottom: 24px;
   }
 
   /* ── Footer ── */
@@ -978,7 +929,7 @@
 <!-- Navigation -->
 <nav>
   <a href="#" class="nav-brand">
-    <img src="assets/appicon.png" alt="Remi" class="nav-icon">
+    <img src="assets/appicon.png" alt="Remi" class="nav-icon" width="32" height="32">
     <span class="nav-name">Remi</span>
   </a>
   <div class="nav-right">
@@ -999,8 +950,8 @@
 <section class="hero" id="top">
   <div class="hero-layout">
     <div class="hero-inner">
-      <h1>Not everything needs a deadline.</h1>
-      <p class="tagline">Remi lets you plan things your way. Set a specific date, pick "early March," or just say "someday." No pressure. No guilt. No subscription.</p>
+      <h1>Remi: the flexible reminder app.</h1>
+      <p class="tagline">Not everything needs a deadline. Set a specific date, pick "early March," or just say "someday." No pressure. No guilt. No subscription.</p>
       <p class="pricing-note">Free on iOS. Premium unlock: <strong>$6.99. Once.</strong></p>
       <div class="hero-buttons">
         <a href="https://itunes.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=6759194352" class="app-store-badge" target="_blank" rel="noopener" onclick="posthog.capture('hero_app_store_click')">
@@ -1008,7 +959,7 @@
         </a>
       </div>
       <div class="android-waitlist" id="android-waitlist">
-        <p>Android coming soon. Drop your email and we'll let you know.</p>
+        <p>Interested in Android? Drop your email and we'll let you know.</p>
         <form class="waitlist-form" id="waitlist-form">
           <input type="text" placeholder="your@email.com" id="waitlist-email" autocomplete="email" autocapitalize="none" spellcheck="false">
           <button type="submit">Notify me</button>
@@ -1016,7 +967,7 @@
       </div>
     </div>
     <div class="hero-phone fade-in">
-      <img src="assets/CreateReminder.png" alt="Remi's flexible date picker showing Someday, Early, Mid, Late, and Exact options">
+      <img src="assets/CreateReminder.png" alt="Remi reminder app flexible date picker with Someday, Anytime, and Exact scheduling options">
     </div>
   </div>
 </section>
@@ -1032,7 +983,7 @@
   </div>
   <div class="how-layout">
     <div class="how-phone fade-in">
-      <img src="assets/Reminders.png" alt="Remi reminders list showing upcoming and someday reminders">
+      <img src="assets/Reminders.png" alt="Remi iOS reminder app showing upcoming tasks and someday reminders list" loading="lazy">
     </div>
     <div class="how-cards">
     <div class="how-card fade-in">
@@ -1065,7 +1016,7 @@
     <p class="section-subtitle">Clean interface, soft colors, and a rabbit who never judges you.</p>
   </div>
   <div class="screenshot-strip fade-in">
-    <img src="assets/screenshots.png" alt="Remi app screenshots showing Plan it Someday, Your Year at a Glance, Weekly & Monthly Digests, Widgets, and Calendar Sync">
+    <img src="assets/screenshots.png" alt="Remi planner app screenshots showing flexible scheduling, yearly overview, notification digests, home screen widgets, and calendar sync" loading="lazy">
   </div>
 </section>
 
@@ -1142,7 +1093,7 @@
 <section class="meet-remi" id="meet-remi">
   <div class="meet-remi-inner">
     <div class="remi-image fade-in">
-      <img src="assets/remi-light.png" alt="Remi the rabbit mascot">
+      <img src="assets/remi-light.png" alt="Remi the rabbit mascot, a small white rabbit in a green vest who lives inside the reminder app" loading="lazy">
     </div>
     <div class="remi-text fade-in">
       <span class="section-label">Say Hello</span>
@@ -1229,7 +1180,7 @@
     </a>
   </div>
   <div class="android-waitlist" id="android-waitlist-bottom">
-    <p>Android coming soon. Drop your email and we'll let you know.</p>
+    <p>Interested in Android? Drop your email and we'll let you know.</p>
     <form class="waitlist-form" id="waitlist-form-bottom">
       <input type="text" placeholder="your@email.com" id="waitlist-email-bottom" autocomplete="email" autocapitalize="none" spellcheck="false">
       <button type="submit">Notify me</button>
@@ -1237,41 +1188,6 @@
   </div>
 </section>
 
-<!-- Privacy Policy (collapsible) -->
-<section class="privacy-section" id="privacy">
-  <button class="privacy-toggle" id="privacy-toggle" aria-expanded="false">
-    Privacy Policy <span class="chevron">&#9660;</span>
-  </button>
-  <div class="privacy-content" id="privacy-content">
-    <p class="privacy-updated">Last updated: February 22, 2026</p>
-
-    <h3>Data Storage</h3>
-    <p>Your reminders are stored locally on your device. If you enable iCloud backup, your data is synced via your personal iCloud account. We do not operate any servers that store your reminder data.</p>
-
-    <h3>Analytics</h3>
-    <p>Remi uses <a href="https://posthog.com" target="_blank" rel="noopener">PostHog</a> for anonymous usage analytics, hosted in the EU. Analytics is opt-in: disabled by default and only enabled if you explicitly turn it on in Settings. When enabled, we collect:</p>
-    <ul>
-      <li>App usage patterns (screens viewed, features used)</li>
-      <li>App version and build number</li>
-    </ul>
-    <p>We do not collect your name, email, reminder content, or any personally identifiable information. Any text you submit through the in-app feedback form is automatically stripped of email addresses and phone numbers before transmission.</p>
-
-    <h3>Third-Party Sharing</h3>
-    <p>We do not sell, share, or transfer your personal data to third parties. Analytics data is processed by PostHog under their <a href="https://posthog.com/privacy" target="_blank" rel="noopener">privacy policy</a>.</p>
-
-    <h3>Calendar Access</h3>
-    <p>If you enable calendar sync, Remi reads and writes events to your Apple Calendar. This data stays on your device and within your iCloud account. Calendar access can be revoked at any time in Settings.</p>
-
-    <h3>Notifications</h3>
-    <p>Push notifications are processed entirely on-device using Apple's local notification system. No notification data is sent to external servers.</p>
-
-    <h3>Children's Privacy</h3>
-    <p>Remi does not knowingly collect data from children under 13.</p>
-
-    <h3>Contact</h3>
-    <p>If you have questions about this privacy policy, contact us at <a href="mailto:info@remireminder.app">info@remireminder.app</a>.</p>
-  </div>
-</section>
 
 <!-- Footer -->
 <footer>
@@ -1284,7 +1200,7 @@
     <a href="mailto:info@remireminder.app">Contact</a>
   </div>
   <div class="footer-links">
-    <a href="#privacy">Privacy Policy</a>
+    <a href="privacy.html">Privacy Policy</a>
   </div>
   <div class="footer-copy">Made by <a href="https://www.linkedin.com/in/emils-ozols/" target="_blank" rel="noopener" style="color:var(--text-secondary);text-decoration:none;">Emils Ozols</a> &middot; &copy; 2026 Remi</div>
 </footer>
@@ -1323,37 +1239,10 @@
 </script>
 
 <script>
-// Privacy policy toggle
-(function() {
-  var toggle = document.getElementById('privacy-toggle');
-  var content = document.getElementById('privacy-content');
-
-  toggle.addEventListener('click', function() {
-    var isOpen = content.classList.toggle('open');
-    toggle.classList.toggle('open');
-    toggle.setAttribute('aria-expanded', isOpen);
-  });
-
-  function openPrivacy() {
-    if (!content.classList.contains('open')) {
-      content.classList.add('open');
-      toggle.classList.add('open');
-      toggle.setAttribute('aria-expanded', 'true');
-    }
-  }
-
-  // Auto-open if navigated via #privacy
-  if (window.location.hash === '#privacy') {
-    openPrivacy();
-  }
-
-  // Open when clicking any link to #privacy
-  document.querySelectorAll('a[href="#privacy"]').forEach(function(link) {
-    link.addEventListener('click', function() {
-      setTimeout(openPrivacy, 100);
-    });
-  });
-})();
+// Redirect #privacy to dedicated page (keeps in-app links working)
+if (window.location.hash === '#privacy') {
+  window.location.replace('privacy.html');
+}
 </script>
 
 <script>
@@ -1378,7 +1267,7 @@
         return;
       }
       posthog.capture('android_waitlist_signup', { email: email });
-      container.innerHTML = '<p class="waitlist-success">Thanks! We\'ll let you know when Remi is ready for Android.</p>';
+      container.innerHTML = '<p class="waitlist-success">Thanks! Your interest has been noted.</p>';
     });
   }
 
