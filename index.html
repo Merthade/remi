@@ -60,8 +60,6 @@
     },
     {
       "@type": "Offer",
-      "price": "6.99",
-      "priceCurrency": "USD",
       "description": "Premium one-time unlock"
     }
   ],
@@ -353,7 +351,7 @@
 
   @media (max-width: 900px) {
     .hero-layout {
-      flex-direction: column-reverse;
+      flex-direction: column;
       text-align: center;
       gap: 40px;
     }
@@ -937,8 +935,8 @@
       <li><a href="#how-it-works">How It Works</a></li>
       <li><a href="#features">Features</a></li>
       <li><a href="#pricing">Pricing</a></li>
-      <li><a href="https://itunes.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=6759194352" class="nav-cta" target="_blank" rel="noopener" onclick="posthog.capture('nav_app_store_click')">Download</a></li>
     </ul>
+    <a href="https://itunes.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=6759194352" class="nav-cta" target="_blank" rel="noopener" onclick="posthog.capture('nav_app_store_click')">Download</a>
     <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
       <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
       <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
@@ -952,7 +950,7 @@
     <div class="hero-inner">
       <h1>Remi: the flexible reminder app.</h1>
       <p class="tagline">Not everything needs a deadline. Set a specific date, pick "early March," or just say "someday." No pressure. No guilt. No subscription.</p>
-      <p class="pricing-note">Free on iOS. Premium unlock: <strong>$6.99. Once.</strong></p>
+      <p class="pricing-note">Free on iOS. <strong>One-time premium unlock.</strong></p>
       <div class="hero-buttons">
         <a href="https://itunes.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=6759194352" class="app-store-badge" target="_blank" rel="noopener" onclick="posthog.capture('hero_app_store_click')">
           <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83" alt="Download on the App Store">
@@ -1110,7 +1108,7 @@
     <div style="text-align:center">
       <span class="section-label">Pricing</span>
       <h2 class="section-title">One price. No strings.</h2>
-      <p class="section-subtitle">Remi is free to download and use. Want the extras? Unlock premium for $6.99. Once. That's it.</p>
+      <p class="section-subtitle">Remi is free to download and use. Want the extras? Unlock premium with a single one-time purchase.</p>
     </div>
   </div>
   <div class="pricing-table-wrap fade-in">
@@ -1119,7 +1117,7 @@
         <tr>
           <th></th>
           <th>Free<span class="price-tag">$0</span></th>
-          <th>Premium<span class="price-tag">$6.99 once</span></th>
+          <th>Premium<span class="price-tag">One-time</span></th>
         </tr>
       </thead>
       <tbody>
