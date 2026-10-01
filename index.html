@@ -76,7 +76,7 @@
     "url": "https://www.linkedin.com/in/emils-ozols/"
   },
   "image": "https://remireminder.app/assets/appicon.png",
-  "screenshot": "https://remireminder.app/assets/CreateReminder.png"
+  "screenshot": "https://remireminder.app/assets/guides/create-approx.webp"
 }
 </script>
 
@@ -381,10 +381,13 @@
     padding-top: 8px;
   }
 
-  .hero-phone img {
+  .hero-phone img, .how-phone img {
     width: 100%;
+    height: auto;
     display: block;
+    filter: drop-shadow(0 14px 28px rgba(0,0,0,0.28));
   }
+  [data-theme="dark"] .hero-phone img, [data-theme="dark"] .how-phone img { filter: drop-shadow(0 14px 28px rgba(0,0,0,0.6)); }
 
   .hero h1 {
     font-size: 52px;
@@ -546,10 +549,6 @@
     padding-top: 8px;
   }
 
-  .how-phone img {
-    width: 100%;
-    display: block;
-  }
 
   .how-cards {
     display: grid;
@@ -905,7 +904,7 @@
      identical sets; shifting it by -50% is exactly one set, so the loop is seamless. ── */
   .shots-marquee { overflow: hidden; padding: 18px 0 24px; margin: 0 -24px; width: calc(100% + 48px); }
   @media (max-width: 700px) { .shots-marquee { margin: 0 -20px; width: calc(100% + 40px); } }
-  .shots-track { display: flex; width: max-content; animation: shots-scroll 70s linear infinite; }
+  .shots-track { display: flex; width: max-content; animation: shots-scroll 100s linear infinite; }
   .shots-marquee:hover .shots-track { animation-play-state: paused; }
   .shots-set { display: flex; }
   .shots-marquee figure { flex: 0 0 auto; width: min(60vw, 250px); margin-right: 22px; }
@@ -1083,7 +1082,7 @@
       </div>
     </div>
     <div class="hero-phone fade-in">
-      <img src="assets/CreateReminder.png" alt="Remi reminder app flexible date picker with Someday, Anytime, and Exact scheduling options">
+      <img src="assets/guides/create-approx.webp" alt="Remi reminder editor with When set to Early November, the 1st to the 10th highlighted on the calendar" width="640" height="1284">
     </div>
   </div>
 </section>
@@ -1099,7 +1098,7 @@
   </div>
   <div class="how-layout">
     <div class="how-phone fade-in">
-      <img src="assets/Reminders.png" alt="Remi iOS reminder app showing upcoming to-do list and someday bucket list items" loading="lazy">
+      <img src="assets/guides/list.webp" alt="Remi reminder list mixing exact dates, Mid and Late October reminders and monthly repeats" width="640" height="1284" loading="lazy">
     </div>
     <div class="how-cards">
     <div class="how-card fade-in">
@@ -1159,16 +1158,32 @@
           <figcaption>Dark mode</figcaption>
         </figure>
         <figure>
+          <img class="screen" src="assets/guides/yearly-orange.webp" alt="Yearly view in the orange accent colour" loading="lazy" width="640" height="1284">
+          <figcaption>Make it yours: 24 accent colours</figcaption>
+        </figure>
+        <figure>
+          <img class="screen" src="assets/guides/yearly-purple-dark.webp" alt="Yearly view in purple, dark mode" loading="lazy" width="640" height="1284">
+          <figcaption>Purple, in dark mode</figcaption>
+        </figure>
+        <figure>
+          <img class="screen" src="assets/guides/yearly-teal.webp" alt="Yearly view in the teal accent colour" loading="lazy" width="640" height="1284">
+          <figcaption>Teal</figcaption>
+        </figure>
+        <figure>
+          <img class="screen" src="assets/guides/yearly-red-dark.webp" alt="Yearly view in red, dark mode" loading="lazy" width="640" height="1284">
+          <figcaption>Red, in dark mode</figcaption>
+        </figure>
+        <figure>
+          <img class="screen" src="assets/guides/yearly-magenta.webp" alt="Yearly view in the magenta accent colour" loading="lazy" width="640" height="1284">
+          <figcaption>Magenta</figcaption>
+        </figure>
+        <figure>
+          <img class="screen" src="assets/guides/yearly-blue-dark.webp" alt="Yearly view in blue, dark mode" loading="lazy" width="640" height="1284">
+          <figcaption>Blue, in dark mode</figcaption>
+        </figure>
+        <figure>
           <img class="screen" src="assets/guides/month-purple.webp" alt="Month view in the purple accent colour" loading="lazy" width="640" height="1284">
-          <figcaption>24 accent colours</figcaption>
-        </figure>
-        <figure>
-          <img class="screen" src="assets/guides/yearly-dark.webp" alt="Yearly view in dark mode" loading="lazy" width="640" height="1284">
-          <figcaption>The year, in dark mode</figcaption>
-        </figure>
-        <figure>
-          <img class="screen" src="assets/guides/someday-orange.webp" alt="Reminder list in the orange accent colour" loading="lazy" width="640" height="1284">
-          <figcaption>Make it yours</figcaption>
+          <figcaption>Every view follows your colour</figcaption>
         </figure>
       </div>
       <div class="shots-set" aria-hidden="true">
@@ -1197,16 +1212,32 @@
           <figcaption>Dark mode</figcaption>
         </figure>
         <figure>
+          <img class="screen" src="assets/guides/yearly-orange.webp" alt="" loading="lazy" width="640" height="1284">
+          <figcaption>Make it yours: 24 accent colours</figcaption>
+        </figure>
+        <figure>
+          <img class="screen" src="assets/guides/yearly-purple-dark.webp" alt="" loading="lazy" width="640" height="1284">
+          <figcaption>Purple, in dark mode</figcaption>
+        </figure>
+        <figure>
+          <img class="screen" src="assets/guides/yearly-teal.webp" alt="" loading="lazy" width="640" height="1284">
+          <figcaption>Teal</figcaption>
+        </figure>
+        <figure>
+          <img class="screen" src="assets/guides/yearly-red-dark.webp" alt="" loading="lazy" width="640" height="1284">
+          <figcaption>Red, in dark mode</figcaption>
+        </figure>
+        <figure>
+          <img class="screen" src="assets/guides/yearly-magenta.webp" alt="" loading="lazy" width="640" height="1284">
+          <figcaption>Magenta</figcaption>
+        </figure>
+        <figure>
+          <img class="screen" src="assets/guides/yearly-blue-dark.webp" alt="" loading="lazy" width="640" height="1284">
+          <figcaption>Blue, in dark mode</figcaption>
+        </figure>
+        <figure>
           <img class="screen" src="assets/guides/month-purple.webp" alt="" loading="lazy" width="640" height="1284">
-          <figcaption>24 accent colours</figcaption>
-        </figure>
-        <figure>
-          <img class="screen" src="assets/guides/yearly-dark.webp" alt="" loading="lazy" width="640" height="1284">
-          <figcaption>The year, in dark mode</figcaption>
-        </figure>
-        <figure>
-          <img class="screen" src="assets/guides/someday-orange.webp" alt="" loading="lazy" width="640" height="1284">
-          <figcaption>Make it yours</figcaption>
+          <figcaption>Every view follows your colour</figcaption>
         </figure>
       </div>
     </div>
