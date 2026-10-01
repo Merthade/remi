@@ -900,8 +900,29 @@
   }
 
 
+
+  /* ── Screenshot marquee (ported from AlarmPlanner's site, 2026-10-01). The track holds two
+     identical sets; shifting it by -50% is exactly one set, so the loop is seamless. ── */
+  .shots-marquee { overflow: hidden; padding: 18px 0 24px; margin: 0 -24px; width: calc(100% + 48px); }
+  @media (max-width: 700px) { .shots-marquee { margin: 0 -20px; width: calc(100% + 40px); } }
+  .shots-track { display: flex; width: max-content; animation: shots-scroll 70s linear infinite; }
+  .shots-marquee:hover .shots-track { animation-play-state: paused; }
+  .shots-set { display: flex; }
+  .shots-marquee figure { flex: 0 0 auto; width: min(60vw, 250px); margin-right: 22px; }
+  .shots-marquee img.screen { width: 100%; height: auto; display: block; filter: drop-shadow(0 14px 28px rgba(0,0,0,0.28)); transition: transform 0.3s ease; }
+  [data-theme="dark"] .shots-marquee img.screen { filter: drop-shadow(0 14px 28px rgba(0,0,0,0.6)); }
+  .shots-marquee figure:hover img.screen { transform: scale(1.045); }
+  .shots-marquee figcaption { font-size: 14px; color: var(--text-secondary); margin-top: 12px; text-align: center; }
+  @keyframes shots-scroll { to { transform: translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce) {
+    .shots-marquee { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .shots-track { animation: none; }
+    .shots-set[aria-hidden="true"] { display: none; }
+  }
+
   /* ── Guides + FAQ (added 2026-10-01) ── */
   .home-guides, .home-faq { padding: 80px 24px; }
+  .home-guides .section-subtitle { margin: 0 auto; }
   .home-guides { background: var(--section-alt); }
   .guide-teaser-grid { max-width: 1080px; margin: 40px auto 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
   .guide-teaser { display: block; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 16px; padding: 22px; color: var(--text); text-decoration: none; transition: border-color 0.2s; }
@@ -1110,8 +1131,85 @@
     <h2 class="section-title">Designed to feel calm</h2>
     <p class="section-subtitle">Clean interface, soft colors, and a rabbit who never judges you.</p>
   </div>
-  <div class="screenshot-strip fade-in">
-    <img src="assets/screenshots.png" alt="Remi daily planner and checklist app screenshots showing scheduling, yearly overview, widgets, and calendar sync" loading="lazy">
+  <div class="shots-marquee">
+    <div class="shots-track">
+      <div class="shots-set">
+        <figure>
+          <img class="screen" src="assets/guides/create-approx.webp" alt="New reminder set to Early November, with the 1st to the 10th highlighted" loading="lazy" width="640" height="1284">
+          <figcaption>Early, Mid or Late in a month</figcaption>
+        </figure>
+        <figure>
+          <img class="screen" src="assets/guides/list.webp" alt="Reminder list mixing exact dates, Mid and Late October, and monthly repeats" loading="lazy" width="640" height="1284">
+          <figcaption>Exact, approximate or someday</figcaption>
+        </figure>
+        <figure>
+          <img class="screen" src="assets/guides/someday.webp" alt="Someday section holding undated reminders below the upcoming ones" loading="lazy" width="640" height="1284">
+          <figcaption>A home for someday</figcaption>
+        </figure>
+        <figure>
+          <img class="screen" src="assets/guides/yearly.webp" alt="Yearly view showing all twelve months with reminder days highlighted" loading="lazy" width="640" height="1284">
+          <figcaption>Your whole year at a glance</figcaption>
+        </figure>
+        <figure>
+          <img class="screen" src="assets/guides/month.webp" alt="Month view with exact-date reminders underlined and the month's reminders listed" loading="lazy" width="640" height="1284">
+          <figcaption>Plan the month</figcaption>
+        </figure>
+        <figure>
+          <img class="screen" src="assets/guides/list-dark.webp" alt="Reminder list in dark mode" loading="lazy" width="640" height="1284">
+          <figcaption>Dark mode</figcaption>
+        </figure>
+        <figure>
+          <img class="screen" src="assets/guides/month-purple.webp" alt="Month view in the purple accent colour" loading="lazy" width="640" height="1284">
+          <figcaption>24 accent colours</figcaption>
+        </figure>
+        <figure>
+          <img class="screen" src="assets/guides/yearly-dark.webp" alt="Yearly view in dark mode" loading="lazy" width="640" height="1284">
+          <figcaption>The year, in dark mode</figcaption>
+        </figure>
+        <figure>
+          <img class="screen" src="assets/guides/someday-orange.webp" alt="Reminder list in the orange accent colour" loading="lazy" width="640" height="1284">
+          <figcaption>Make it yours</figcaption>
+        </figure>
+      </div>
+      <div class="shots-set" aria-hidden="true">
+        <figure>
+          <img class="screen" src="assets/guides/create-approx.webp" alt="" loading="lazy" width="640" height="1284">
+          <figcaption>Early, Mid or Late in a month</figcaption>
+        </figure>
+        <figure>
+          <img class="screen" src="assets/guides/list.webp" alt="" loading="lazy" width="640" height="1284">
+          <figcaption>Exact, approximate or someday</figcaption>
+        </figure>
+        <figure>
+          <img class="screen" src="assets/guides/someday.webp" alt="" loading="lazy" width="640" height="1284">
+          <figcaption>A home for someday</figcaption>
+        </figure>
+        <figure>
+          <img class="screen" src="assets/guides/yearly.webp" alt="" loading="lazy" width="640" height="1284">
+          <figcaption>Your whole year at a glance</figcaption>
+        </figure>
+        <figure>
+          <img class="screen" src="assets/guides/month.webp" alt="" loading="lazy" width="640" height="1284">
+          <figcaption>Plan the month</figcaption>
+        </figure>
+        <figure>
+          <img class="screen" src="assets/guides/list-dark.webp" alt="" loading="lazy" width="640" height="1284">
+          <figcaption>Dark mode</figcaption>
+        </figure>
+        <figure>
+          <img class="screen" src="assets/guides/month-purple.webp" alt="" loading="lazy" width="640" height="1284">
+          <figcaption>24 accent colours</figcaption>
+        </figure>
+        <figure>
+          <img class="screen" src="assets/guides/yearly-dark.webp" alt="" loading="lazy" width="640" height="1284">
+          <figcaption>The year, in dark mode</figcaption>
+        </figure>
+        <figure>
+          <img class="screen" src="assets/guides/someday-orange.webp" alt="" loading="lazy" width="640" height="1284">
+          <figcaption>Make it yours</figcaption>
+        </figure>
+      </div>
+    </div>
   </div>
 </section>
 
