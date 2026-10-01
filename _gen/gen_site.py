@@ -242,7 +242,7 @@ SUPPORT_FAQS = [
  ("Why didn't my \"early March\" reminder notify me?", "Approximate reminders (Early, Mid, Late, Anytime) cover a stretch of days, so they don't fire at a set time. They show in your lists, calendars and widgets. You can turn on a weekly or monthly summary notification in Settings > Notifications."),
  ("How do I back up my reminders?", "Remi can back up to your iCloud account from Settings. Your reminders are otherwise stored only on your iPhone."),
  ("Does Remi sync to my calendar?", "Remi can copy your reminders into the iPhone's calendar. The sync is one-way, from Remi to the calendar; changes made in the calendar are not copied back."),
- ("How do I delete my data?", "Deleting the app removes the reminders stored on your iPhone. If you used iCloud backup, you can delete the backup from Settings > [your name] > iCloud > Manage Storage."),
+ ("How do I delete my data?", "Deleting the app removes the reminders stored on your iPhone. If you used iCloud backup, you can delete the backup from your iCloud storage settings on the iPhone."),
 ]
 sup_canon = f"{DOMAIN}/support/"
 sup_desc = "Help with Remi: restoring Premium, notifications, backups, calendar sync and contacting the developer."

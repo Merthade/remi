@@ -25,6 +25,17 @@ installs that churn.
 - Calendar sync: ONE-WAY, Remi to the system calendar. iCloud backup. No account. 24 accent colours
   (4 free). iOS 17.6 or later, iPhone.
 - Price: free, Premium is a $6.99 one-time purchase (USD; local price varies).
+- Repeat menu labels in the app: exact "Every day / Every week / Every 2 weeks / Every month / Custom…";
+  month-based "Every month / Every 2 months / Every year / Custom…". Custom: 1-30 (exact) or 1-24 (month-based).
+
+iOS CONTEXT (checked 2026-10-01 against Apple support 102484, MacRumors/9to5Mac iOS 26.2-27 coverage):
+- iOS 26.2+: the built-in Reminders app can mark a reminder Urgent; it rings as an ALARM at its due time,
+  through Silent and Focus, fixed 9-minute snooze. Never write "reminders can't ring on Silent" unqualified.
+- iOS 27: natural-language entry in Reminders and Calendar, extra-large widget size. Still NO fuzzy dates
+  (early/mid/late month) and no someday concept in the built-in apps.
+- Built-in Reminders' exact repeat menu labels were NOT verified: describe them ("a monthly repeat"), don't quote.
+- Alarm Clock Planner (cross-sell): dated alarms, monthly/yearly repeats, rings through Silent/Focus (AlarmKit),
+  3 alarms free, REQUIRES iOS 26.2+ (say so; Remi runs from 17.6).
 """
 
 # Cross-promotion targets: shipped, live apps only (brand rule: an unshipped project is not a product).
@@ -36,7 +47,7 @@ RISE = "https://risemorning.app/"
 
 # Each cross-sell box: (heading, paragraph html). Shown only where the need genuinely differs.
 XSELL_ALARM = ("Need it to actually ring?",
-    f"""A reminder is a notification: it plays once at notification volume and stays quiet when your phone is on Silent or in a Focus. For a wake-up, a medication dose or anything you cannot miss, use an alarm instead. <a href="{ALARMPLANNER}" data-ph="xsell_alarmplanner">Alarm Clock Planner</a> is our alarm app for exactly that: alarms on real dates, monthly and yearly repeats, and they ring through Silent.""")
+    f"""A Remi reminder is a regular notification: one sound at notification volume, no sound on Silent, and easy to swipe away. For a wake-up, a medication dose or anything you cannot miss, you want something that rings like an alarm. On iOS 26.2 and later, the built-in Reminders app can do that for a single reminder if you mark it <strong>Urgent</strong>. For alarms on real dates with monthly and yearly repeats, there is <a href="{ALARMPLANNER}" data-ph="xsell_alarmplanner">Alarm Clock Planner</a>, our alarm app: its alarms ring through Silent and Focus. It needs iOS 26.2 or later.""")
 
 PAGES = [
 # ---------------------------------------------------------------- 1
@@ -50,7 +61,7 @@ lede="Fix the garden fence. Learn to make sourdough. Call that friend you keep m
 quick="""<strong>Quick answer:</strong> In the built-in Reminders app, a reminder with no date is the default: just type it and leave the date off. The catch is that undated reminders sit in a list you only see when you go looking. <a href="/">Remi</a> gives them their own <em>Someday</em> section and, when you are ready, lets you move them to a loose time like "early March" instead of a hard date.""",
 body="""
 <h2>Undated reminders are allowed, they just disappear</h2>
-<p>Every reminders app on iPhone lets you save a task without a due date. The problem is not saving it. The problem is that a reminder with no date never comes back to you on its own. It has no alert, it does not show in today's list, and it slowly sinks under everything that does have a date.</p>
+<p>Most reminder apps on iPhone, including the built-in one, let you save a task without a due date. The problem is not saving it. The problem is that a reminder with no date never comes back to you on its own. It has no alert, it does not show in today's list, and it slowly sinks under everything that does have a date.</p>
 <p>So people do the next obvious thing and give it a fake date, "this Saturday", just to make it appear somewhere. Saturday comes, the fence does not get fixed, the reminder goes overdue, and now it is a small red guilt badge instead of a plan.</p>
 
 <h2>Give undated things a home, not a deadline</h2>
@@ -188,7 +199,7 @@ body="""
 <ol>
   <li>Tap + and type the reminder, for example "Pay the card bill".</li>
   <li>Set <strong>When</strong> to Exact and pick the first date, and a time if you want a notification.</li>
-  <li>Open <strong>Repeat</strong> and choose <strong>Monthly</strong>.</li>
+  <li>Open <strong>Repeat</strong> and choose <strong>Every month</strong>.</li>
   <li>Optionally choose to end after a number of times, for a payment plan with a known length. Save.</li>
 </ol>
 <p>Exact-date reminders send a notification at their time, if notifications are on for that reminder.</p>
@@ -197,7 +208,7 @@ body="""
 <ol>
   <li>Tap + and type it, for example "Pay rent".</li>
   <li>Set <strong>When</strong> to Early, Mid or Late, and the starting month.</li>
-  <li>Open <strong>Repeat</strong> and choose <strong>Monthly</strong>, or <strong>Every 2 months</strong>.</li>
+  <li>Open <strong>Repeat</strong> and choose <strong>Every month</strong>, or <strong>Every 2 months</strong>.</li>
 </ol>
 <p>When you tick it off, Remi moves it to the next month on its own, so the list always shows the one coming up.</p>
 <figure>
@@ -206,10 +217,10 @@ body="""
 </figure>
 
 <h2>When a reminder is not enough</h2>
-<p>A missed rent reminder is an awkward conversation. A missed medication dose is a different matter. For anything that has to get your attention at an exact time, even with the phone on Silent, use an alarm rather than a reminder. See the box below.</p>
+<p>A missed rent reminder is an awkward conversation. A missed medication dose is a different matter. For anything that has to get your attention at an exact time, even with the phone on Silent, you need something that rings like an alarm, not a regular reminder. See the box below.</p>
 """,
 faqs=[
- ("How do I make a reminder repeat every month on iPhone?", "In the built-in Reminders app, set a date and choose Monthly under Repeat. In Remi, set an exact date or Early, Mid or Late of a month, then choose Monthly under Repeat. Repeats are part of Remi Premium."),
+ ("How do I make a reminder repeat every month on iPhone?", "In the built-in Reminders app, set a date and pick a monthly repeat. In Remi, set an exact date or Early, Mid or Late of a month, then choose Every month under Repeat. Repeats are part of Remi Premium."),
  ("Can a monthly reminder stop after a few months?", "Yes. In Remi you can end a repeat after a set number of times, which suits payment plans and short courses."),
 ],
 xsell=XSELL_ALARM,
@@ -242,7 +253,7 @@ body="""
 <ol>
   <li>Tap + and type it, for example "Car insurance renewal".</li>
   <li>Set <strong>When</strong> to Anytime, or Early, Mid or Late, and pick the month.</li>
-  <li>Open <strong>Repeat</strong> and choose <strong>Yearly</strong>. Or Custom, for every 2 or 3 years.</li>
+  <li>Open <strong>Repeat</strong> and choose <strong>Every year</strong>. Or Custom, for every 2 or 3 years.</li>
 </ol>
 <figure>
   <img class="screen" src="/assets/guides/yearly.webp" alt="Remi yearly view showing all twelve months of 2027 with reminder days highlighted in green" loading="lazy" width="640" height="1284">
@@ -253,8 +264,8 @@ body="""
 <p>The free version of Remi covers the next twelve months. Premium removes that limit, which matters for things like a passport that expires in three years or a car service every two years.</p>
 """,
 faqs=[
- ("How do I set a birthday reminder that repeats every year?", "In Remi, create an exact-date reminder on the birthday, then set Repeat to Custom, every 12 months. In the built-in Reminders app, set the date and choose Yearly."),
- ("Can I get a yearly reminder for a month instead of a specific day?", "Yes, in Remi. Pick Anytime (or Early, Mid or Late) of the month and repeat it yearly. It suits renewals and annual check-ups that happen around a time rather than on a day."),
+ ("How do I set a birthday reminder that repeats every year?", "In Remi, create an exact-date reminder on the birthday, then set Repeat to Custom, every 12 months. In the built-in Reminders app, set the date and pick a yearly repeat."),
+ ("Can I get a yearly reminder for a month instead of a specific day?", "Yes, in Remi. Pick Anytime (or Early, Mid or Late) of the month and set Repeat to Every year. It suits renewals and annual check-ups that happen around a time rather than on a day."),
 ],
 related=["monthly-reminder-iphone", "quarterly-reminder-iphone", "plan-your-year-iphone"],
 cta_h="Every year, without rebuilding it every year",
@@ -377,7 +388,7 @@ body="""
 </ul>
 
 <h2>When something truly cannot be missed</h2>
-<p>Medication, a flight, a wake-up: those need an alarm that rings through Silent, not a reminder. See the box below.</p>
+<p>Medication, a flight, a wake-up: those need something that rings through Silent, like an alarm, not a regular reminder. See the box below.</p>
 """,
 faqs=[
  ("What is a good reminder app for ADHD?", "One that does not force a date on everything, keeps the next task visible, and makes capturing a thought fast. Remi was built around approximate dates (early, mid, late in a month) and a Someday list, with Home Screen widgets and voice input."),
@@ -470,13 +481,13 @@ dict(
 slug="reminder-vs-alarm-iphone",
 cluster="repeat",
 title="Reminder or Alarm? When an iPhone Reminder Isn't Enough",
-meta="Reminders are notifications: quiet on Silent, easy to swipe away. Alarms ring. Which to use for medication, wake-ups, bills and errands on iPhone.",
+meta="Most reminders are notifications: quiet on Silent, easy to swipe away. Alarms ring. Since iOS 26.2 a Reminders item can ring too. Which to use for medication, wake-ups and errands.",
 h1="Reminder or Alarm? When an iPhone Reminder Isn't Enough",
 lede="You set a reminder to take your tablet at 8. The phone was on Silent. It buzzed once, face down on the sofa, and that was that.",
-quick="""<strong>Quick answer:</strong> A reminder is a notification: it plays once at notification volume, stays quiet on Silent and in Focus modes, and is easy to dismiss. An alarm rings until you stop it. Use reminders for things that can wait an hour; use an alarm for wake-ups, medication and anything you cannot miss.""",
+quick="""<strong>Quick answer:</strong> A normal reminder is a notification: no sound on Silent, held back by Focus modes, easy to dismiss. An alarm rings until you stop it. Use reminders for things that can wait an hour. For the things that can't, use an alarm, or, on iOS 26.2 and later, mark the reminder <strong>Urgent</strong> in the built-in Reminders app, which makes it ring like an alarm.""",
 body="""
-<h2>What a reminder does</h2>
-<p>A reminder, in the built-in Reminders app, in Remi, or in any to-do app, arrives as a notification. On iPhone that means:</p>
+<h2>What a normal reminder does</h2>
+<p>A reminder in the built-in Reminders app, in Remi, or in any to-do app arrives as a notification. On iPhone that means:</p>
 <ul>
   <li>One sound or buzz, at notification volume.</li>
   <li>No sound when the phone is on Silent, and held back by Focus modes unless you allow the app.</li>
@@ -485,18 +496,22 @@ body="""
 <p>That is exactly right for most things: buy stamps, call the garage, pay rent this week. You see it when you look at your phone, and nothing breaks if that is an hour later.</p>
 
 <h2>What an alarm does</h2>
-<p>An alarm keeps ringing until you stop or snooze it, and an alarm app built on Apple's alarm system rings even with the phone on Silent. It is not something you can miss by having your phone face down.</p>
+<p>An alarm keeps ringing until you stop or snooze it, full screen, and it rings even with the phone on Silent or in a Focus. It is not something you can miss by having your phone face down.</p>
+
+<h2>Urgent reminders (iOS 26.2 and later)</h2>
+<p>Since iOS 26.2, the built-in Reminders app has an <strong>Urgent</strong> switch under Date &amp; Time. An Urgent reminder rings as an alarm at its due time, through Silent and Focus, with a fixed 9-minute snooze. If you only have one or two must-not-miss items and are on a recent iOS, that may be all you need. Remi's reminders do not have an alarm mode; they are always regular notifications.</p>
 
 <h2>Which to use</h2>
 <ul>
-  <li><strong>Reminder:</strong> errands, chores, bills, renewals, birthdays, ideas, anything with a loose time. <a href="/">Remi</a> is built for these, including the ones with no exact date.</li>
-  <li><strong>Alarm:</strong> waking up, medication, catching a flight, leaving for the school run, anything where "an hour later" is a problem.</li>
+  <li><strong>Regular reminder:</strong> errands, chores, bills, renewals, birthdays, ideas, anything with a loose time. <a href="/">Remi</a> is built for these, including the ones with no exact date.</li>
+  <li><strong>Urgent reminder or an alarm:</strong> waking up, medication, catching a flight, leaving for the school run, anything where "an hour later" is a problem.</li>
 </ul>
-<p>Plenty of people use both: Remi for the long list of things that need doing sometime, an alarm for the few that need doing <em>now</em>.</p>
+<p>Plenty of people use both: Remi for the long list of things that need doing sometime, and an alarm for the few that need doing <em>now</em>.</p>
 """,
 faqs=[
- ("Do iPhone reminders make a sound on Silent?", "No. Reminders arrive as notifications, which are silent when the phone is on Silent and can be held back by Focus modes. Alarms are different and ring through Silent."),
- ("Should I use a reminder or an alarm for medication?", "If missing the time matters, use an alarm, because it keeps ringing and is not silenced by the Silent switch. Use a reminder for things that can wait."),
+ ("Do iPhone reminders make a sound on Silent?", "Normal reminders don't: they arrive as notifications, which make no sound on Silent and can be held back by Focus modes. Since iOS 26.2, a reminder marked Urgent in the built-in Reminders app rings as an alarm, including on Silent."),
+ ("Should I use a reminder or an alarm for medication?", "If missing the time matters, use something that rings like an alarm: an alarm app, or an Urgent reminder in the built-in Reminders app on iOS 26.2 and later. Regular reminders are fine for things that can wait."),
+ ("Can Remi reminders ring like an alarm?", "No. Remi's reminders are regular notifications. For alarms, use an alarm app or the built-in Reminders app's Urgent option."),
 ],
 xsell=XSELL_ALARM,
 related=["monthly-reminder-iphone", "adhd-reminder-app", "yearly-reminder-iphone"],
