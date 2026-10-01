@@ -9,6 +9,7 @@ Modelled on AlarmPlanner's website/_gen/gen_guides.py (same structure, same camp
 Jekyll/GitHub Pages skips _-prefixed directories, so _gen/ is not deployed.
 """
 import json, os, re, sys
+from html import escape as attr_escape
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 SITE = os.path.dirname(HERE)
@@ -99,7 +100,9 @@ def footer(campaign=CT_HOME):
 </footer>"""
 
 def head(title, desc, canonical, og_type="article"):
-    t = title if title.endswith("Remi") else f"{title} | Remi"
+    # Escape for attribute context: a raw " in a description once cut the voice guide's to 4 chars.
+    t = attr_escape(title if title.endswith("Remi") or len(title) > 52 else f"{title} | Remi")
+    title, desc = attr_escape(title), attr_escape(desc)
     return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -220,7 +223,7 @@ def cluster_block(key, heading, intro):
 </section>"""
 
 hub_canon = f"{DOMAIN}/guides/"
-hub_desc = "Practical guides for reminders on iPhone: reminders without a date, sometime next month, monthly, quarterly and yearly repeats, widgets, voice and planning your year."
+hub_desc = "Practical iPhone reminder guides: no-date reminders, sometime next month, monthly, quarterly and yearly repeats, widgets, voice and year planning."
 collection = {"@context": "https://schema.org", "@type": "CollectionPage", "name": "Remi guides",
               "url": hub_canon, "description": hub_desc,
               "hasPart": [{"@type": "Article", "headline": p["h1"], "url": f"{DOMAIN}/guides/{p['slug']}/"} for p in PAGES]}
